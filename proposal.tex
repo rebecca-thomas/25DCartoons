@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+
+\begin{document}
+\newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
+\begin{center}
+\HRule \\
+\textsc{Linnea Shin and Rebecca Thomas }\\[.1cm]
+\textsc{\Large{Proposal - Graphics Project}}\\[-.1cm] % Title
+\HRule \\[.4cm]
+\end{center}
+\doublespacing
+\section*{Project Overview}
+For this project we would like to implement Alec Rivers' algorithm for creating 2.5D models. The algorithm mentioned in his paper uses several key views of a cartoon to generate a range of intermediate views. These views can be used to create an animated 2.5D model of the cartoon.  While a large portion of Rivers' paper focuses on the user interface that they have created to allow users to draw the views and override errors that might occur while generating the animations we plan to implement a simplified version of his work. 
+
+To correctly represent a stroke there are three things the algorithm must find, the stroke's shape, z-ordering, and position. The shape is found using 2D interpolation between the key views. To find the position and z-ordering anchor points are first calculated by drawing lines through the center of the stroke and the camera. These anchor points are then used to determine the relative z-ordering as the cartoon is rotated about the origin.
+
+We plan to cut down on the user interface functionality by allowing the user to input images and some associated data rather than allowing the user to create images from scratch in our program. While it would be nice to allow the user to select strokes and override the algorithm for computing position or z-ordering our implementation of this feature will be dependent on the time we have after implementing the main algorithm. To demonstrate the functionality of our algorithm we will create a couple of sample cartoon views and corresponding animations that our program generated.
+
+\section*{Possible Trouble Spots}
+Some possible problems are finding a way to represent all the required information about our images and how to display our results. To try and avoid these problems later on we plan to spend our first week addressing these issues. Another potential problem would be underestimating the time it takes to create and debug the models we plan to have.
+
+\section*{Schedule}
+We plan to allocate ~4 weeks to coding and development, and the last
+week for last minute disasters.
+
+\begin{itemize}
+\item Week 1 will be dedicated to solving the problem of displaying our work
+and creating any starting images.
+\item Week 2 we will implement the anchor points and understand how to do
+the Z-ordering.
+\item Week 3 will focus on the implementation of the interpolation techniques.
+\item Week 4 will be for creating our animations and debugging.
+\item Week 5 will be for debugging and preparing our final presentation.
+\end{itemize}
+
+\section*{Suggested Grading}
+\begin{itemize}
+\item Week 1: 10 pts
+\item Week 2: 10 pts
+\item Week 3: 40 pts
+\item Week 4: 15 pts
+\end{itemize}
+
+
+\begin{thebibliography}{99}
+\singlespacing
+\bibitem{rivers} Rivers, Alec. \emph{2.5D Cartoon Models}. http://alecrivers.com/2.5dcartoonmodels/files/
+2.5D\%20Cartoon\%20Models.pdf
+\end{thebibliography}
+\end{document}
