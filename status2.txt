@@ -1,0 +1,44 @@
+I've created a parser to read in a simple fie that is of the format:
+
+numKeyViews
+filename0
+x0
+y0
+z0
+filename1
+x1
+y1
+z1
+....
+filenameN
+xN
+yN
+zN
+
+Then each view is loaded and stored in an array of svg objects. 
+The camera positions are also stored in an array with the same 
+indexing. Then I filter through the svg object getting all the 
+subelements and storing them in a dict for that view. The 
+dictionaries are stored in an array that is indexed in the same
+way. By storing the strokes in a dictionary I can look them up 
+across views by name. This requires that the images be created 
+in a way that the strokes are named consistently across the views.
+
+The next step which I have been working on this week is to get the 
+positions of the stroke in the image and use these to create rays 
+from the camera. Once I have these rays I should be able to calculate
+the anchor positions for the strokes. The problem that I am having
+is that the different shapes and strokes don't have a method to get
+their center. It looks like most have some way that I would be able
+to calculate it but since it is not the same by type of stroke it 
+looks to be more complicated than it should be. 
+
+I'm thinking that I will move on to the steps after this using
+an artifical position and then come back and figure out how to 
+calculate the position. If I cannot figure out how to calculate the
+position I think it will be easier to port the other code in to 
+a different language than having to scramble and write all the code 
+without a working algorithm.
+
+I have not sent you a video since I do not have anything visual to
+show at this point but will send one as soon as I have something.
