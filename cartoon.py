@@ -1,218 +1,57 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.000000 0.000000 640.000000 480.000000"  >
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <defs  />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <g id="Base Layer" visibility="visible"  >
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <ellipse stroke-linejoin="miter" stroke-linecap="butt" stroke-opacity="1" rx="161.451471382289" ry="170.196746760259" stroke="#ffe74d" stroke-dashoffset="0" cy="235.589902807775" cx="328.858328833693" stroke-miterlimit="4" stroke-dasharray="" stroke-width="10" id="head" fill="none"  />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <ellipse stroke-linejoin="miter" stroke-linecap="butt" fill-opacity="1" rx="15.1572624190065" ry="32.066968885269" stroke="none" stroke-dashoffset="0" cy="184.503239740821" cx="481.670491360691" stroke-miterlimit="4" stroke-dasharray="" stroke-width="1" id="rightEye" fill="#000"  />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <ellipse stroke-linejoin="miter" stroke-linecap="butt" fill-opacity="1" rx="15.157262802124" ry="32.066967010498" stroke="none" stroke-dashoffset="0" cy="184.503234863281" cx="481.670501708984" stroke-miterlimit="4" stroke-dasharray="" stroke-width="1" id="leftEye" fill="#000"  />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </g>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</svg>
+import sys
+import pysvg.parser
+from pysvg.shape import *
+from pysvg.builders import *
+
+
+def readSVG(fname):
+    return pysvg.parser.parse(fname)
+
+def writeSVG(fname, svg):
+    svg.save(fname)
+
+def getSubElems(elem):
+    strokes = {}
+    subs(elem, strokes)
+    return strokes
+    
+def subs(elem, dict):
+    if isinstance(elem, BaseElement) and elem.getAttribute('id') != None:
+        dict[elem.getAttribute('id')] = elem
+    for sub in elem._subElements:
+        if isinstance(sub, BaseElement):
+            subs(sub, dict)
+   
+def readInput(filename):
+    f = open(filename, 'r')
+    numViews = int(f.readline())
+    keyViews = []
+    cameraPos = []
+    for i in range(0, numViews):
+        keyViews.append(readSVG(f.readline()[:-1]))
+        cameraPos.append([float(f.readline()), 
+                          float(f.readline()), 
+                          float(f.readline())])
+    return numViews, keyViews, cameraPos
+
+if __name__ == '__main__':
+    inputFile = sys.argv[1]
+    numKeyViews, keyViews, cameraPos = readInput(inputFile)
+
+    keyDicts = []
+
+    outputFile = sys.argv[0]
+    
+    for svg in keyViews:
+        dict = getSubElems(svg)
+        print dict
+        keyDicts.append(dict)
+        
+    print keyDicts[1][u'leftEye'].getTopRight()
+
+    print keyViews
+    print cameraPos
+
+    
+
+    writeSVG(outputFile, svg)

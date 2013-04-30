@@ -1,7 +1,7 @@
 
-1. load key views w/ camera pos
-2. seperate strokes
-3. associate strokes across views
+--1. load key views w/ camera pos
+--2. seperate strokes
+--3. associate strokes across views
 4. find position
 5. calc rays
 6. calc anchor point
