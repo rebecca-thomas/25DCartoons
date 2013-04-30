@@ -34,13 +34,19 @@ def readInput(filename):
                           float(f.readline())])
     return numViews, keyViews, cameraPos
 
+def calcRays(keyViews, cameraPos, stroke):
+    pos = (100, 120)
+    rays = []
+#    for i in range(len(keyViews)):
+        
+
 if __name__ == '__main__':
     inputFile = sys.argv[1]
     numKeyViews, keyViews, cameraPos = readInput(inputFile)
 
     keyDicts = []
 
-    outputFile = sys.argv[0]
+    outputFile = sys.argv[2]
     
     for svg in keyViews:
         dict = getSubElems(svg)
@@ -52,6 +58,7 @@ if __name__ == '__main__':
     print keyViews
     print cameraPos
 
+    svg = keyViews[0]
     
 
     writeSVG(outputFile, svg)

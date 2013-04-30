@@ -1,39 +1,15 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" height="800" width="800" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-3,-2.5 5,5"  >
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.000000 0.000000 640.000000 480.000000"  >
 
+    <defs  />
 
-<defs  >
+    <g id="Base Layer" visibility="visible"  >
 
-  <line y2="2" transform="translate(0,-1) rotate(-54)" x2="0" y1="-1" x1="0" id="slantedline"  />
+        <ellipse stroke-linejoin="miter" stroke-linecap="butt" stroke-opacity="1" rx="170" ry="170" stroke="#ffe74d" stroke-dashoffset="0" cy="240" cx="320" stroke-miterlimit="4" stroke-dasharray="" stroke-width="10" id="head" fill="none"  />
 
-  <clipPath id="72degrees"  >
+        <ellipse stroke-linejoin="miter" stroke-linecap="butt" fill-opacity="1" rx="31.3816146850586" ry="32.029899597168" stroke="none" stroke-dashoffset="0" cy="191.370483398438" cx="384.840698242188" stroke-miterlimit="4" stroke-dasharray="" stroke-width="1" id="rightEye" fill="#000"  />
 
-    <polygon points="0,0 2,-2 0,-2"  />
+        <path stroke-linejoin="miter" d="M 277.762 172.747 C 287.142 187.534 282.917 207.369 268.324 217.050 C 253.732 226.730 234.298 222.590 224.918 207.803 C 215.538 193.015 219.763 173.180 234.355 163.500 C 248.948 153.819 268.382 157.959 277.762 172.747 Z M 277.762 172.747 " fill-opacity="1" stroke-dashoffset="0" stroke="none" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="" stroke-width="1" id="leftEye" fill="#000"  />
 
-    <polygon points="0,0 0,-2 -2,-2" transform="rotate(72)"  />
-
-  </clipPath>
-
-  <g id="normpentagon"  >
-
-      <use xlink:href="#slantedline" id="edge" clip-path="url(#72degrees)"  />
-
-      <use xlink:href="#edge" transform="rotate(144)"  />
-
-      <use xlink:href="#edge" transform="rotate(-144)"  />
-
-      <use xlink:href="#edge" transform="rotate(72)"  />
-
-      <use xlink:href="#edge" transform="rotate(-72)"  />
-
-  </g>
-
-</defs>
-
-
-<use xlink:href="#normpentagon" stroke="#f00" stroke-width=".2" transform="rotate(5)"  />
-
-<use xlink:href="#normpentagon" stroke="#0f0" stroke-width=".1" transform="translate(.3 -.5) scale(1.2) rotate(20)" stroke-opacity=".5"  />
-
-<use xlink:href="#normpentagon" stroke="#00f" stroke-width=".03" stroke-dasharray=".04 .05" transform="translate(-1) scale(2)"  />
+    </g>
 
 </svg>
