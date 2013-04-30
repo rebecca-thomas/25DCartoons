@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:jitters="http://www.semicolonproductions.com/jitters" viewBox="0.000000 0.000000 640.000000 480.000000" jitters:gridXSpacing="10" jitters:gridYSpacing="10" jitters:gridActive="no">
+    <defs/>
+    <g visibility="visible" id="Base Layer" jitters:groupType="layer" jitters:effect="none">
+        <ellipse cx="320" cy="240" rx="170" ry="170" fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="#ffe74d" stroke-opacity="1" id="head"/>
+        <ellipse cx="384.84071274298" cy="191.370477861771" rx="31.381614470842" ry="32.0299001079914" fill="#000" fill-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="none" id="rightEye"/>
+        <path d="M 277.762 172.747 C 287.142 187.534 282.917 207.369 268.324 217.050 C 253.732 226.730 234.298 222.590 224.918 207.803 C 215.538 193.015 219.763 173.180 234.355 163.500 C 248.948 153.819 268.382 157.959 277.762 172.747 " fill="#000" fill-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="none" id="leftEye"/>
+    </g>
+</svg>

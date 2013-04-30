@@ -28,9 +28,7 @@
 
 
 
-
     <defs  />
-
 
 
 
@@ -90,9 +88,7 @@
 
 
 
-
         <ellipse stroke-linejoin="miter" stroke-linecap="butt" stroke-opacity="1" rx="161.451471382289" ry="170.196746760259" stroke="#ffe74d" stroke-dashoffset="0" cy="235.589902807775" cx="328.858328833693" stroke-miterlimit="4" stroke-dasharray="" stroke-width="10" id="head" fill="none"  />
-
 
 
 
@@ -152,7 +148,6 @@
 
 
 
-
         <ellipse stroke-linejoin="miter" stroke-linecap="butt" fill-opacity="1" rx="15.157262802124" ry="32.066967010498" stroke="none" stroke-dashoffset="0" cy="184.503234863281" cx="481.670501708984" stroke-miterlimit="4" stroke-dasharray="" stroke-width="1" id="leftEye" fill="#000"  />
 
 
@@ -183,9 +178,7 @@
 
 
 
-
     </g>
-
 
 
 

@@ -10,18 +10,35 @@ def readSVG(fname):
 def writeSVG(fname, svg):
     svg.save(fname)
 
+def getSubElems(elem):
+    strokes = {}
+    subs(elem, strokes)
+    return strokes
+    
+def subs(elem, dict):
+    if isinstance(elem, BaseElement) and elem.getAttribute('id') != None:
+        dict[elem.getAttribute('id')] = elem
+    for sub in elem._subElements:
+        if isinstance(sub, BaseElement):
+            subs(sub, dict)
+   
+    
+
 if __name__ == '__main__':
     numKeyViews = int(sys.argv[1])
     keyViews = []
+    cameraPos = []
+    keyDicts = []
     for i in range(0, numKeyViews):
         keyViews.append(readSVG(sys.argv[2+i]))
 
     outputFile = sys.argv[1+numKeyViews]
     
     for svg in keyViews:
-        print svg._subElements
-        for elem in svg._subElements:
-            if isinstance(elem, BaseElement):
-                print elem._elementName
+        dict = getSubElems(svg)
+        print dict
+        keyDicts.append(dict)
+        
+    print keyDicts[1][u'leftEye'].getTopRight()
 
     writeSVG(outputFile, svg)
