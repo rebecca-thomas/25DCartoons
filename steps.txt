@@ -3,8 +3,8 @@
 --2. seperate strokes
 --3. associate strokes across views
 4. find position
-5. calc rays
-6. calc anchor point
+--5. calc rays
+--6. calc anchor point
 7. interpolate
 8. choose closest z-ordering
 9. represent new stroke

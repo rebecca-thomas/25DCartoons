@@ -22,17 +22,31 @@ def subs(elem, dict):
         if isinstance(sub, BaseElement):
             subs(sub, dict)
    
-    
-
-if __name__ == '__main__':
-    numKeyViews = int(sys.argv[1])
+def readInput(filename):
+    f = open(filename, 'r')
+    numViews = int(f.readline())
     keyViews = []
     cameraPos = []
-    keyDicts = []
-    for i in range(0, numKeyViews):
-        keyViews.append(readSVG(sys.argv[2+i]))
+    for i in range(0, numViews):
+        keyViews.append(readSVG(f.readline()[:-1]))
+        cameraPos.append([float(f.readline()), 
+                          float(f.readline()), 
+                          float(f.readline())])
+    return numViews, keyViews, cameraPos
 
-    outputFile = sys.argv[1+numKeyViews]
+def calcRays(keyViews, cameraPos, stroke):
+    pos = (100, 120)
+    rays = []
+#    for i in range(len(keyViews)):
+        
+
+if __name__ == '__main__':
+    inputFile = sys.argv[1]
+    numKeyViews, keyViews, cameraPos = readInput(inputFile)
+
+    keyDicts = []
+
+    outputFile = sys.argv[2]
     
     for svg in keyViews:
         dict = getSubElems(svg)
@@ -40,5 +54,11 @@ if __name__ == '__main__':
         keyDicts.append(dict)
         
     print keyDicts[1][u'leftEye'].getTopRight()
+
+    print keyViews
+    print cameraPos
+
+    svg = keyViews[0]
+    
 
     writeSVG(outputFile, svg)
