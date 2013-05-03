@@ -8,4 +8,4 @@
 7. interpolate
 8. choose closest z-ordering
 9. represent new stroke
-10. write svg
+--10. write svg

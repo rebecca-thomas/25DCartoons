@@ -1,0 +1,15 @@
+This week I was working on the steps that come after finding the anchor position.
+This involves calculating rays that go from the center of the stroke in the direction
+of the camera. Then once I have the rays I need to find an anchor point by minimizing 
+the distance from the point to the rays. This is done by calculating the project onto
+each ray and averaging the points that are found. 
+
+I still have not figured out how to get the center of the strokes. I was able to find
+a C++ library that gives each stroke a center point. However, I cannot just use this
+library because it does not have a way to load in svg images. So I am still skipping 
+this part for now.
+
+I am still a little bit behind schedule but have made up a fair amount of the work. 
+This next week I will be working on the interpolation and z-ordering. I'm still a bit
+confused about how to handle the interpolation. I will need to look over the paper 
+again to try and work out how to intermix the interpolation and z-ordering.

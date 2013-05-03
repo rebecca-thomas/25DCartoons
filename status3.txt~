@@ -1,0 +1,4 @@
+This week I was working on the steps that come after finding the anchor position.
+This involves calculating rays that go from the center of the stroke in the direction
+of the camera. Then once I have the rays I need to find an anchor point by minimizing 
+the distance from the point to the rays. 
