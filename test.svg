@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.000000 0.000000 640.000000 480.000000"  >
-
-    <defs  />
-
-    <g id="Base Layer" visibility="visible"  >
-
-        <ellipse stroke-linejoin="miter" stroke-linecap="butt" stroke-opacity="1" rx="170" ry="170" stroke="#ffe74d" stroke-dashoffset="0" cy="240" cx="320" stroke-miterlimit="4" stroke-dasharray="" stroke-width="10" id="head" fill="none"  />
-
-        <ellipse stroke-linejoin="miter" stroke-linecap="butt" fill-opacity="1" rx="31.3816146850586" ry="32.029899597168" stroke="none" stroke-dashoffset="0" cy="191.370483398438" cx="384.840698242188" stroke-miterlimit="4" stroke-dasharray="" stroke-width="1" id="rightEye" fill="#000"  />
-
-        <path stroke-linejoin="miter" d="M 277.762 172.747 C 287.142 187.534 282.917 207.369 268.324 217.050 C 253.732 226.730 234.298 222.590 224.918 207.803 C 215.538 193.015 219.763 173.180 234.355 163.500 C 248.948 153.819 268.382 157.959 277.762 172.747 Z M 277.762 172.747 " fill-opacity="1" stroke-dashoffset="0" stroke="none" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="" stroke-width="1" id="leftEye" fill="#000"  />
-
-    </g>
-
+<path stroke-linejoin="miter" d="M 449.7095 165.275 C 458.797 177.7905 458.797 198.083 449.7095 210.5985 C 440.6225 223.114 425.889 223.114 416.802 210.5985 C 407.714 198.083 407.714 177.7905 416.802 165.275 C 425.889 152.7595 440.6225 152.7595 449.7095 165.275" fill-opacity="1" stroke-dashoffset="0" stroke="none" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="" stroke-width="1" id="rightEye" fill="#000"  />
+<path stroke-linejoin="miter" d="M 441.615 117.5175 C 506.3345 183.945 506.3345 291.645 441.615 358.0725 C 376.895 424.5 271.9635 424.5 207.2435 358.0725 C 142.5235 291.645 142.5235 183.945 207.2435 117.5175 C 271.9635 51.09 376.895 51.09 441.615 117.5175" stroke-opacity="1" stroke-dashoffset="0" stroke="#ffe74d" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="" stroke-width="10" id="head" fill="none"  />
+<path stroke-linejoin="miter" d="M 385.075 167.2875 C 392.725 180.9425 390.6125 201.012 380.356 212.114 C 370.1005 223.2155 355.585 221.1455 347.9355 207.4905 C 340.2855 193.835 342.398 173.7655 352.654 162.664 C 362.91 151.5625 377.4255 153.6325 385.075 167.2875 Z M 277.762 172.747" fill-opacity="1" stroke-dashoffset="0" stroke="none" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="" stroke-width="1" id="leftEye" fill="#000"  />
 </svg>
