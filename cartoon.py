@@ -56,7 +56,7 @@ def calcAnchorPos(keyViews, cameraPos, stroke):
         anchorPos = tempPos/3
     return anchorPos
     
-def combineD(dList):
+def combineD(dList, weight):
     numViews = len(dList)
     newD = []
     while True:
@@ -66,20 +66,33 @@ def combineD(dList):
                 temp.append(dList[i][0])
                 dList[i] = dList[i][1:]
 
-        print temp
+#        print temp
         if temp == []:
-            return newD
+            return " ".join(newD)
         
         if allEqual(temp):
             newD.append(temp[0])
         else:
             sum = 0
-            for j in temp:
-                sum += float(j)
+            for j in range(0, len(temp)):
+                sum += weight[j] * float(temp[j])
             newD.append(str(sum/numViews))
     
 def allEqual(items):
     return all(x == items[0] for x in items)
+
+def getWeighting(cameraPos, viewPos):
+    weights = []
+    for view in cameraPos: 
+        weights.append(max(view.x * viewPos.x, 0) +
+                       max(view.y * viewPos.y, 0) +
+                       max(view.z * viewPos.z, 0) )
+    maxVal = max(weights)
+    print maxVal
+    for i in range(0, len(weights)):
+        weights[i] = weights[i]/ maxVal
+    
+    return weights
 
 if __name__ == '__main__':
     inputFile = sys.argv[1]
@@ -88,6 +101,11 @@ if __name__ == '__main__':
     keyDicts = []
 
     outputFile = sys.argv[2]
+    viewTempPos = map(float, sys.argv[3].split("_"))
+    viewPos = Point(viewTempPos[0], viewTempPos[1], viewTempPos[2])
+    
+    weights = getWeighting(cameraPos, viewPos)
+    print weights
     
     for svg in keyViews:
         dict = getSubElems(svg)
@@ -119,8 +137,8 @@ if __name__ == '__main__':
             for keyDict in keyDicts:
                 if keyDict[stroke].get_d() != None:
                     dList.append(str(keyDict[stroke].get_d()).split(' '))
-            newD = combineD(dList)
-            print newD
-            keyDict[stroke].set_d(" ".join(newD))
+            newD = combineD(dList, weights)
+#            print newD
+            keyDict[stroke].set_d(newD)
             svg.addElement(keyDict[stroke])
     writeSVG(outputFile, svg)

@@ -1,4 +1,4 @@
-2
+3
 face.svg
 0
 0
@@ -6,4 +6,8 @@ face.svg
 face2.svg
 -1000
 0
+0
+face3.svg
+0
+1000
 0
