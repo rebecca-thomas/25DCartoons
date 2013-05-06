@@ -1,6 +1,17 @@
 from geometry import *
 from cartoonHelpers import *
 
+def changeView(oldView):
+    print oldView._attributes
+    viewBox = oldView.get_viewBox().split(' ')
+    newViewBox = [float(viewBox[2]) * -.5, float(viewBox[3]) * -.5,
+                  float(viewBox[2]) * 1, float(viewBox[3]) * 1]
+    xOffset = float(newViewBox[0])
+    yOffset = float(newViewBox[1])
+    print yOffset
+    newViewBox = ' '.join(map(str, newViewBox))
+    return newViewBox, xOffset, yOffset
+
 def calcRays(keyViews, cameraPos, stroke):
     pos = Point(100, 120, 0)
     rays = []

@@ -11,23 +11,15 @@ if __name__ == '__main__':
     numKeyViews, keyViews, cameraPos = readInput(inputFile)
 
     newSvg = pysvg.parser.svg()
-    viewBox = keyViews[0].get_viewBox().split(' ')
-    newViewBox = [float(viewBox[2]) * -.5, float(viewBox[3]) * -.5, 
-                  float(viewBox[2]) * .5, float(viewBox[3]) * .5]
     
-    offsetMatrix = TransformBuilder()
-    offsetMatrix.setMatrix(1, 0, 0, 1, newViewBox[0], newViewBox[1])
+    newViewBox, xOffset, yOffset = changeView(keyViews[0])
 
+    offsetMatrix = TransformBuilder()
+    offsetMatrix.setMatrix(1, 0, 0, 1, xOffset, yOffset)
 
     reverseMatrix = TransformBuilder()
-   # reverseMatrix.setScaling(1, 5)
-    reverseMatrix.setMatrix(-1, 0, 0, 1, newViewBox[0] *-1, newViewBox[1]) 
+    reverseMatrix.setMatrix(-1, 0, 0, 1, xOffset * -1, yOffset * 1) 
 
-#    for i in range(0, len(newViewBox)):
-#        newViewBox[i] = 2 * newViewBox[i]
-
-    print newViewBox
-    newViewBox = ' '.join(map(str, newViewBox))
     print newViewBox
     newSvg.set_viewBox(newViewBox)
 
@@ -95,6 +87,11 @@ if __name__ == '__main__':
 #            print keyViews[viewNum].get_transform()
             tempStroke.set_transform(keyViews[viewNum].get_transform())
             newSvg.addElement(tempStroke)
+            print tempStroke.get_transform()
     
+    print xOffset
 #    newSvg = keyViews[3]
+#    newSvg.set_viewBox(newViewBox)
+    newSvg.set_transform(offsetMatrix.getTransform())
+    print newSvg._attributes
     writeSVG(outputFile, newSvg)
