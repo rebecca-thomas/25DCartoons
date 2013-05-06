@@ -40,7 +40,6 @@ if __name__ == '__main__':
 
     for stroke in strokes:
         anchorPos.append((calcAnchorPos(keyDicts, cameraPos, stroke), stroke))
-    print anchorPos
 
     zOrder = getZOrdering(anchorPos, viewPos)
     
@@ -50,6 +49,7 @@ if __name__ == '__main__':
             count = 0
             for keyDict in keyDicts:
                 if keyDict[stroke].get_d() != None:
+#                    print keyDict[stroke].get_d()
                     dList.append(str(keyDict[stroke].get_d()).split(' '))
 
             newD = combineD(dList, weights)

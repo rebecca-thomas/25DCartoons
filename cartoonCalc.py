@@ -120,5 +120,4 @@ def getZOrdering(anchorPos, viewPos):
         toStroke = Vector(origin, stroke[0])
         zOrder.append((toStroke.dot(toView), stroke[1]))
     zOrder.sort()
-    print zOrder
     return zOrder
