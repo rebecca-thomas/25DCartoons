@@ -42,7 +42,9 @@ if __name__ == '__main__':
         anchorPos.append((calcAnchorPos(keyDicts, cameraPos, stroke), stroke))
     print anchorPos
 
-    for stroke in strokes:
+    zOrder = getZOrdering(anchorPos, viewPos)
+    
+    for z, stroke in zOrder:
         dList = []
         if isinstance(keyDicts[0][stroke], path):
             count = 0
@@ -56,7 +58,6 @@ if __name__ == '__main__':
             tempStroke.set_transform(keyViews[viewNum].get_transform())
             newSvg.addElement(tempStroke)
     
-#    newSvg = keyViews[3]
     newSvg.set_transform(offsetMatrix.getTransform())
     
     writeSVG(outputFile, newSvg)

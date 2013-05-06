@@ -7,7 +7,7 @@
 --6. calc rays
 --7. calc anchor point
 --8. interpolate
-9. choose closest z-ordering
+--9. choose closest z-ordering
 --10. represent new stroke
 --11. write svg
 

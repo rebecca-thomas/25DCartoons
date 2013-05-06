@@ -112,3 +112,13 @@ def getStrokeNames(dict):
         strokes.append(stroke)
     return strokes
 
+def getZOrdering(anchorPos, viewPos):
+    zOrder = []
+    origin = Point(0, 0, 0)
+    toView = Vector(origin, viewPos)
+    for stroke in anchorPos:
+        toStroke = Vector(origin, stroke[0])
+        zOrder.append((toStroke.dot(toView), stroke[1]))
+    zOrder.sort()
+    print zOrder
+    return zOrder
