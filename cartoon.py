@@ -20,13 +20,12 @@ if __name__ == '__main__':
     reverseMatrix = TransformBuilder()
     reverseMatrix.setMatrix(-1, 0, 0, 1, xOffset * -1, yOffset * 1) 
 
-    print newViewBox
     newSvg.set_viewBox(newViewBox)
 
     for i in range(0, numKeyViews):
         keyViews[i].set_transform(offsetMatrix.getTransform())
         keyViews.append(copy.deepcopy(keyViews[i]))
-        keyViews[i + numKeyViews].set_transform(reverseMatrix.getTransform())
+        keyViews[i + numKeyViews].set_transform(reverseTransform(cameraPos[i], xOffset, yOffset))
         cameraPos.append(cameraPos[i] * -1)
     numKeyViews *= 2
 
@@ -43,18 +42,7 @@ if __name__ == '__main__':
 
     for svg in keyViews:
         dict = getSubElems(svg)
-#        print dict
         keyDicts.append(dict)
-
-    #print
-    #print keyDicts[0][u'mouth']._attributes
-    #print
-    #print keyDicts[3][u'mouth']._attributes
-        
-#    print keyDicts[1][u'leftEye'].getTopRight()
-
- #   print keyViews
-#    print cameraPos
 
     strokes = []
     for stroke in keyDicts[0].keys():
@@ -63,15 +51,6 @@ if __name__ == '__main__':
     anchorPos = []
     for stroke in strokes:
         anchorPos.append(calcAnchorPos(keyDicts, cameraPos, stroke))
-
-#    print anchorPos
-
-
-#    print keyDicts[4][strokes[0]]._attributes['fill'] 
-#    keyDicts[0][u'mouth']._attributes['stroke'] = unicode('#ffff00')
-
-#    keyDicts[5][u'mouth']._attributes['fill'] = unicode('#6F0')
-#    print keyDicts[4][strokes[0]]._attributes['fill'] 
     
     for stroke in strokes:
         dList = []
@@ -84,14 +63,12 @@ if __name__ == '__main__':
             newD = combineD(dList, weights)
             tempStroke = copy.deepcopy(keyDicts[viewNum][stroke])
             tempStroke.set_d(newD)
-#            print keyViews[viewNum].get_transform()
             tempStroke.set_transform(keyViews[viewNum].get_transform())
             newSvg.addElement(tempStroke)
             print tempStroke.get_transform()
     
     print xOffset
 #    newSvg = keyViews[3]
-#    newSvg.set_viewBox(newViewBox)
     newSvg.set_transform(offsetMatrix.getTransform())
     print newSvg._attributes
     writeSVG(outputFile, newSvg)

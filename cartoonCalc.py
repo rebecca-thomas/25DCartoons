@@ -1,14 +1,15 @@
+from pysvg.builders import *
 from geometry import *
 from cartoonHelpers import *
 
 def changeView(oldView):
-    print oldView._attributes
     viewBox = oldView.get_viewBox().split(' ')
     newViewBox = [float(viewBox[2]) * -.5, float(viewBox[3]) * -.5,
                   float(viewBox[2]) * 1, float(viewBox[3]) * 1]
+
     xOffset = float(newViewBox[0])
     yOffset = float(newViewBox[1])
-    print yOffset
+
     newViewBox = ' '.join(map(str, newViewBox))
     return newViewBox, xOffset, yOffset
 
@@ -53,8 +54,6 @@ def combineD(dList, weight):
 
 def getWeighting(cameraPos, viewPos):
     weights = []
-    # distance between two cameras in x
-    # distance between view and cameraPos
     origin = Point(0, 0, 0)
     cameraRay = Vector(origin, viewPos)
     viewDepths = []
@@ -62,10 +61,10 @@ def getWeighting(cameraPos, viewPos):
         viewRay = Vector(origin, view)
         weights.append(max(0, viewRay.dot(cameraRay)))
         viewDepths.append(max(abs(view.x), abs(view.y), abs(view.z)))
+    
     maxVal = sum(weights)
     maxVal = max(1, maxVal)
-    print viewDepths
-    print maxVal
+    
     for i in range(0, len(weights)):
         weights[i] = weights[i] / maxVal
 
@@ -79,3 +78,14 @@ def getViewNum(weights):
             max = weights[i]
             maxInd = i
     return maxInd
+
+def reverseTransform(origView, xOffset, yOffset):
+    reverseMatrix = TransformBuilder()
+    xVal = 1
+    yVal = 1
+    if origView.x != 0:
+        xVal = -1
+    if origView.y != 0:
+        yVal = -1
+    reverseMatrix.setMatrix(xVal, 0, 0, yVal, xOffset * xVal, yOffset * yVal)
+    return reverseMatrix.getTransform()
