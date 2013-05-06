@@ -86,13 +86,16 @@ def reverseTransform(origView, xOffset, yOffset):
     yVal = 1
     if origView.x != 0:
         xVal = -1
-    if origView.y != 0:
+    elif origView.y != 0:
         yVal = -1
     reverseMatrix.setMatrix(xVal, 0, 0, yVal, xOffset * xVal, yOffset * yVal)
     return reverseMatrix.getTransform()
 
 def getDerivedViews(keyViews, numKeyViews, cameraPos, xOffset, yOffset):
+    offsetMatrix = TransformBuilder()
+    offsetMatrix.setMatrix(1, 0, 0, 1, xOffset, yOffset)
     for i in range(0, numKeyViews):
+        keyViews[i].set_transform(offsetMatrix.getTransform())
         keyViews.append(copy.deepcopy(keyViews[i]))
         keyViews[i + numKeyViews].set_transform(reverseTransform(cameraPos[i], xOffset, yOffset))
         cameraPos.append(cameraPos[i] * -1)

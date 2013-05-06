@@ -58,6 +58,6 @@ if __name__ == '__main__':
             tempStroke.set_transform(keyViews[viewNum].get_transform())
             newSvg.addElement(tempStroke)
     
-    newSvg.set_transform(offsetMatrix.getTransform())
+#    newSvg.set_transform(offsetMatrix.getTransform())
     
     writeSVG(outputFile, newSvg)
