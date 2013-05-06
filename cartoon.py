@@ -83,14 +83,19 @@ def allEqual(items):
 
 def getWeighting(cameraPos, viewPos):
     weights = []
+    # distance between two cameras in x
+    # distance between view and cameraPos
+    origin = Point(0, 0, 0)
+    cameraRay = Vector(origin, viewPos)
     for view in cameraPos: 
-        weights.append(max(view.x * viewPos.x, 0) +
-                       max(view.y * viewPos.y, 0) +
-                       max(view.z * viewPos.z, 0) )
+        viewRay = Vector(origin, view)
+        weights.append(max(0, viewRay.dot(cameraRay)))
+
     maxVal = max(weights)
-    print maxVal
+    maxVal = max(1, maxVal)
+#    print maxVal
     for i in range(0, len(weights)):
-        weights[i] = weights[i]/ maxVal
+        weights[i] = weights[i] / maxVal
     
     return weights
 
