@@ -10,3 +10,16 @@
 9. choose closest z-ordering
 --10. represent new stroke
 --11. write svg
+
+create derived key views
+     - reflect based on direction of camera
+
+calc z-ordering
+     - get ray from origin to anchor pos
+     - get ray from origin to viewPos
+     - take dot product
+     - store stroke name and dot product in array
+
+choose closet z-ordering
+     - sort by dot product
+     - add stroke lowest dot product first
