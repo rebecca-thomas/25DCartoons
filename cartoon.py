@@ -11,10 +11,11 @@ if __name__ == '__main__':
     numKeyViews, keyViews, cameraPos = readInput(inputFile)
     
     reverseMatrix = TransformBuilder()
-    reverseMatrix.setMatrix(-1, 0, 0, -1, 0, 0) 
+    reverseMatrix.setRotation(90)
+    #reverseMatrix.setMatrix(-1, 0, 0, 1, 0, 0) 
     for i in range(0, numKeyViews):
         keyViews.append(copy.deepcopy(keyViews[i]))
-        keyViews[i].set_transform(reverseMatrix)
+        keyViews[i + numKeyViews].set_transform(reverseMatrix)
         cameraPos.append(cameraPos[i] * -1)
     numKeyViews *= 2
 
@@ -34,19 +35,16 @@ if __name__ == '__main__':
 #        print dict
         keyDicts.append(dict)
 
- #   print
- #   print keyDicts[0][u'mouth']._attributes
- #   print
- #   print keyDicts[4][u'mouth']._attributes
+    print
+    print keyDicts[0][u'mouth']._attributes
+    print
+    print keyDicts[3][u'mouth']._attributes
         
 #    print keyDicts[1][u'leftEye'].getTopRight()
 
  #   print keyViews
 #    print cameraPos
 
-    svg = keyViews[0]
-    svg._subElements = []
-    
     strokes = []
     for stroke in keyDicts[0].keys():
         strokes.append(stroke)
@@ -75,7 +73,9 @@ if __name__ == '__main__':
             newD = combineD(dList, weights)
             tempStroke = copy.deepcopy(keyDicts[viewNum][stroke])
             tempStroke.set_d(newD)
+            print keyViews[viewNum].get_transform().transform_dict
+            tempStroke.set_transform(keyViews[viewNum].get_transform())
             newSvg.addElement(tempStroke)
     
-#    newSvg = keyViews[1]
+#    newSvg = keyViews[3]
     writeSVG(outputFile, newSvg)
