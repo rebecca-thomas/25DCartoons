@@ -1,3 +1,4 @@
+import copy
 from pysvg.builders import *
 from geometry import *
 from cartoonHelpers import *
@@ -89,3 +90,25 @@ def reverseTransform(origView, xOffset, yOffset):
         yVal = -1
     reverseMatrix.setMatrix(xVal, 0, 0, yVal, xOffset * xVal, yOffset * yVal)
     return reverseMatrix.getTransform()
+
+def getDerivedViews(keyViews, numKeyViews, cameraPos, xOffset, yOffset):
+    for i in range(0, numKeyViews):
+        keyViews.append(copy.deepcopy(keyViews[i]))
+        keyViews[i + numKeyViews].set_transform(reverseTransform(cameraPos[i], xOffset, yOffset))
+        cameraPos.append(cameraPos[i] * -1)
+    numKeyViews *= 2
+    return keyViews, numKeyViews, cameraPos
+
+def createKeyDicts(keyViews):
+    keyDicts = []
+    for svg in keyViews:
+        dict = getSubElems(svg)
+        keyDicts.append(dict)
+    return keyDicts
+
+def getStrokeNames(dict):
+    strokes = []
+    for stroke in dict.keys():
+        strokes.append(stroke)
+    return strokes
+

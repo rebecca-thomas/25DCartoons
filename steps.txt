@@ -1,6 +1,6 @@
 
 --1. load key views w/ camera pos
-2. create derived key views
+--2. create derived key views
 --3. seperate strokes
 --4. associate strokes across views
 5. find position
