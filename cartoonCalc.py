@@ -29,7 +29,6 @@ def combineD(dList, weight):
                 temp.append(dList[i][0])
                 dList[i] = dList[i][1:]
 
-#        print temp
         if temp == []:
             return " ".join(newD)
 
@@ -60,3 +59,12 @@ def getWeighting(cameraPos, viewPos):
         weights[i] = weights[i] / maxVal
 
     return weights
+
+def getViewNum(weights):
+    max = 0
+    maxInd = 0
+    for i in range(0, len(weights)):
+        if weights[i] > max:
+            max = weights[i]
+            maxInd = i
+    return maxInd

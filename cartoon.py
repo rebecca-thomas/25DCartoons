@@ -1,4 +1,5 @@
 import sys
+import copy
 from geometry import *
 from pysvg.builders import *
 from cartoonParsing import *
@@ -12,7 +13,7 @@ if __name__ == '__main__':
     reverseMatrix = TransformBuilder()
     reverseMatrix.setMatrix(-1, 0, 0, -1, 0, 0) 
     for i in range(0, numKeyViews):
-        keyViews.append(keyViews[i])
+        keyViews.append(copy.deepcopy(keyViews[i]))
         keyViews[i].set_transform(reverseMatrix)
         cameraPos.append(cameraPos[i] * -1)
     numKeyViews *= 2
@@ -25,11 +26,18 @@ if __name__ == '__main__':
     
     weights = getWeighting(cameraPos, viewPos)
     print weights
-    
+    viewNum = getViewNum(weights)
+    print viewNum
+
     for svg in keyViews:
         dict = getSubElems(svg)
-        print dict
+#        print dict
         keyDicts.append(dict)
+
+ #   print
+ #   print keyDicts[0][u'mouth']._attributes
+ #   print
+ #   print keyDicts[4][u'mouth']._attributes
         
 #    print keyDicts[1][u'leftEye'].getTopRight()
 
@@ -50,11 +58,11 @@ if __name__ == '__main__':
 #    print anchorPos
 
     newSvg = pysvg.parser.svg()
-    print keyDicts[4][strokes[0]]._attributes['fill'] 
+#    print keyDicts[4][strokes[0]]._attributes['fill'] 
 #    keyDicts[0][u'mouth']._attributes['stroke'] = unicode('#ffff00')
 
-    keyDicts[5][u'mouth']._attributes['fill'] = unicode('#6F0')
-    print keyDicts[4][strokes[0]]._attributes['fill'] 
+#    keyDicts[5][u'mouth']._attributes['fill'] = unicode('#6F0')
+#    print keyDicts[4][strokes[0]]._attributes['fill'] 
     
     for stroke in strokes:
         dList = []
@@ -65,6 +73,9 @@ if __name__ == '__main__':
                     dList.append(str(keyDict[stroke].get_d()).split(' '))
 
             newD = combineD(dList, weights)
-            keyDict[stroke].set_d(newD)
-            svg.addElement(keyDicts[0][stroke])
-    writeSVG(outputFile, svg)
+            tempStroke = copy.deepcopy(keyDicts[viewNum][stroke])
+            tempStroke.set_d(newD)
+            newSvg.addElement(tempStroke)
+    
+#    newSvg = keyViews[1]
+    writeSVG(outputFile, newSvg)
