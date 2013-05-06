@@ -12,6 +12,11 @@ class Point(object):
     def __div__(self, num):
         return Point(self.x / num, self.y / num, self.z / num)
 
+    def __mul__(self, num):
+        return Point(-1 * self.x,
+                     -1 * self.y,
+                     -1 * self.z)
+
 class Vector(object):
     
     def __init__(self, start, end):

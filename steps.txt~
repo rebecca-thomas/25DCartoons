@@ -1,11 +1,12 @@
 
 --1. load key views w/ camera pos
---2. seperate strokes
---3. associate strokes across views
-4. find position
---5. calc rays
---6. calc anchor point
-7. interpolate
-8. choose closest z-ordering
-9. represent new stroke
---10. write svg
+2. create derived key views
+--3. seperate strokes
+--4. associate strokes across views
+5. find position
+--6. calc rays
+--7. calc anchor point
+--8. interpolate
+9. choose closest z-ordering
+--10. represent new stroke
+--11. write svg

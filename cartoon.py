@@ -76,7 +76,7 @@ def combineD(dList, weight):
             sum = 0
             for j in range(0, len(temp)):
                 sum += weight[j] * float(temp[j])
-            newD.append(str(sum/numViews))
+            newD.append(str(sum))
     
 def allEqual(items):
     return all(x == items[0] for x in items)
@@ -87,13 +87,15 @@ def getWeighting(cameraPos, viewPos):
     # distance between view and cameraPos
     origin = Point(0, 0, 0)
     cameraRay = Vector(origin, viewPos)
+    viewDepths = []
     for view in cameraPos: 
         viewRay = Vector(origin, view)
         weights.append(max(0, viewRay.dot(cameraRay)))
-
-    maxVal = max(weights)
+        viewDepths.append(max(abs(view.x), abs(view.y), abs(view.z)))
+    maxVal = sum(weights)
     maxVal = max(1, maxVal)
-#    print maxVal
+    print viewDepths
+    print maxVal
     for i in range(0, len(weights)):
         weights[i] = weights[i] / maxVal
     
@@ -102,6 +104,14 @@ def getWeighting(cameraPos, viewPos):
 if __name__ == '__main__':
     inputFile = sys.argv[1]
     numKeyViews, keyViews, cameraPos = readInput(inputFile)
+    
+    reverseMatrix = TransformBuilder()
+    reverseMatrix.setMatrix(-1, 0, 0, -1, 0, 0) 
+    for i in range(0, numKeyViews):
+        keyViews.append(keyViews[i])
+        keyViews[i].set_transform(reverseMatrix)
+        cameraPos.append(cameraPos[i] * -1)
+    numKeyViews *= 2
 
     keyDicts = []
 
@@ -136,14 +146,27 @@ if __name__ == '__main__':
 #    print anchorPos
 
     newSvg = pysvg.parser.svg()
+    print keyDicts[4][strokes[0]]._attributes['fill'] 
+#    keyDicts[0][u'mouth']._attributes['stroke'] = unicode('#ffff00')
+
+    keyDicts[5][u'mouth']._attributes['fill'] = unicode('#6F0')
+    print keyDicts[4][strokes[0]]._attributes['fill'] 
+    
     for stroke in strokes:
         dList = []
         if isinstance(keyDicts[0][stroke], path):
+            count = 0
             for keyDict in keyDicts:
                 if keyDict[stroke].get_d() != None:
                     dList.append(str(keyDict[stroke].get_d()).split(' '))
+
             newD = combineD(dList, weights)
 #            print newD
             keyDict[stroke].set_d(newD)
-            svg.addElement(keyDict[stroke])
+#            print keyDict[stroke]._attributes
+            print 
+#            print 'keyDict:'
+#            print keyDict
+#            print
+            svg.addElement(keyDicts[viewNum][stroke])
     writeSVG(outputFile, svg)
