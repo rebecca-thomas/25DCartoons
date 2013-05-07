@@ -1,3 +1,4 @@
+from math import sqrt
 class Point(object):
 
     def __init__(self, x=0, y=0, z=0):
@@ -37,11 +38,29 @@ class Vector(object):
         newX = self.y * toCross.z - self.z * toCross.y
         newY = self.z * toCross.x - self.x * toCross.z
         newZ = self.x * toCross.y - self.y * toCross.x
-        return Vector(newX, newY, newZ)
+        newVec = Vector(Point(0,0,0), Point(0,0,0))
+        newVec.x = newX
+        newVec.y = newY
+        newVec.z = newZ
+        return newVec
 
     def __mul__(self, num):
         return Vector(Point(self.x, self.y, self.z), 
                       Point(self.x * num, self.y * num, self.z * num))
+    def length(self):
+        return sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
+    
+    def __add__(self, other):
+        return Vector(self, other)
+    
+    def norm(self):
+        mag = self.length()
+        if mag == 0:
+            mag = 1
+        self.x = self.x / mag
+        self.y = self.y / mag
+        self.z = self.z / mag
+        return self
 
 class Ray(object):
     

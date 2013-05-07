@@ -6,8 +6,6 @@ from cartoonHelpers import *
 from cartoonCalc import *
 
 if __name__ == '__main__':
-    keyDicts = []
-    strokes = []
     anchorPos = []
 
     inputFile = sys.argv[1]    
@@ -21,9 +19,6 @@ if __name__ == '__main__':
     newSvg = pysvg.parser.svg()
     
     newViewBox, xOffset, yOffset = changeView(keyViews[0])
-
-    offsetMatrix = TransformBuilder()
-    offsetMatrix.setMatrix(1, 0, 0, 1, xOffset, yOffset)
 
     newSvg.set_viewBox(newViewBox)
 
@@ -41,15 +36,16 @@ if __name__ == '__main__':
     for stroke in strokes:
         anchorPos.append((calcAnchorPos(keyDicts, cameraPos, stroke), stroke))
 
+#    print calcStrokeCenter(keyDicts[0][stroke].get_d(), cameraPos[0])
     zOrder = getZOrdering(anchorPos, viewPos)
-    
+    print zOrder
     for z, stroke in zOrder:
         dList = []
         if isinstance(keyDicts[0][stroke], path):
-            count = 0
             for keyDict in keyDicts:
                 if keyDict[stroke].get_d() != None:
 #                    print keyDict[stroke].get_d()
+#                    print calcStrokeCenter(keyDict[stroke].get_d(), cameraPos[0])
                     dList.append(str(keyDict[stroke].get_d()).split(' '))
 
             newD = combineD(dList, weights)

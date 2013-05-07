@@ -15,10 +15,11 @@ def changeView(oldView):
     return newViewBox, xOffset, yOffset
 
 def calcRays(keyViews, cameraPos, stroke):
-    pos = Point(100, 120, 0)
     rays = []
     for i in range(len(keyViews)):
-        rays.append(Ray(pos, Vector(pos, cameraPos[i])))
+        if isinstance(keyViews[i][stroke], path):
+            pos = calcStrokeCenter(keyViews[i][stroke].get_d(), cameraPos[i])
+            rays.append(Ray(pos, Vector(pos, cameraPos[i])))
     return rays
 
 def calcAnchorPos(keyViews, cameraPos, stroke):
@@ -123,4 +124,50 @@ def getZOrdering(anchorPos, viewPos):
         toStroke = Vector(origin, stroke[0])
         zOrder.append((toStroke.dot(toView), stroke[1]))
     zOrder.sort()
+    zOrder.reverse()
     return zOrder
+
+def calcStrokeCenter(data, cameraPos):
+    minX = float('inf')
+    minY = float('inf')
+    maxX = 0 
+    maxY = 0
+    
+    d = data.split(" ")
+ #   print d
+    while d != [] and d != ['']:
+#        print d[0]
+        if d[0] == "M" or d[0] == 'C' or d[0] == 'Z' or d[0] == 'L':
+            d = d[1:]
+        else:
+            if float(d[0]) < minX:
+                minX = float(d[0])
+            elif float(d[0]) > maxX:
+                maxX = float(d[0])
+                
+            if float(d[1]) < minY:
+                minY = float(d[1])
+            elif float(d[1]) > maxY:
+                maxY = float(d[1])
+            
+            d = d[2:]
+
+    x = (maxX - minX) / 2
+    y = (maxY - minY) / 2
+    return transTo3D(cameraPos, x, y)
+    
+def transTo3D(cameraPos, x, y):
+
+    # x times right
+    # y times up
+    # towards is vec from camera to origin
+
+    print cameraPos
+    dist = Vector(cameraPos, Point(0,0,0)).length()
+    towards = Vector(cameraPos, Point(0, 0, 0))
+    right = towards.cross(Vector(cameraPos, Point(1, 0, 0)))
+    up = towards.cross(Vector(cameraPos, Point(0, 1, 0)))
+
+    vecToPoint = cameraPos + towards.norm() * dist + right.norm() * x + up.norm() * y
+    return vecToPoint
+
