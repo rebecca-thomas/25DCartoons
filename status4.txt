@@ -1,0 +1,44 @@
+I think I have implemented everything I needed to now. Unfortunately, 
+a couple problems have come up. 
+
+I was able to calculate the center position for strokes by using a rough
+approximation of the center of the bounding box for the stroke. This is
+not a very good measure of the center of the stroke but should be fine
+for very simple images like I plan to use. 
+
+I also implemented dervied views this week. This is done by simply
+reflecting the image depending on the direction of the camera. One 
+problem that came up with this was the depth ordering of shapes in the
+original svg image. I thing I have found a way to solve this problem 
+using a better image creator.
+
+To determine the z-ordering for the final image I create a vector from
+the origin to the anchor position as well as a vector from the origin
+to the new camera position. I then dot these together and sort. The 
+closest stroke will be the one with the largest dot product so I draw 
+the strokes in increasing order.
+
+One problem that has come up is determining the shape of the new stroke.
+While I was just looping through and averaging the lineto, etc points I
+realized this won't work unless the strokes have the same order of 
+instructions across views. This is really hard to do when creating an 
+image. So I need to figure out a new way to combine the strokes and 
+determine the new shape for the stroke.
+
+Another problem that came up was creating the derived views in cases 
+where the stroke wrapped around and needs to appear in the key view 
+and the derived view. This is awkward when creating the images since
+points are needed in the middle of the stroke so that they line up 
+with the edge of the other stroke.
+
+I thought I was pretty much back on schedule and just needed better
+images to test with. Then while trying to create better images I 
+discovered some of the problems I mentioned so I am a bit behind 
+schedule. I will be spending most of this weekend trying to figure
+out a way to combine the strokes to get the new shape as well as 
+creating better images.
+
+If there is time I wanted to adjust size based on the distance
+from the specified camera location to the origin since I am 
+currently only dealing with the ratio of x to y to z. However, it 
+does not look like I will have time for this.

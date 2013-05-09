@@ -1,10 +1,15 @@
 import copy
+from string import upper, replace, letters
 from pysvg.builders import *
 from geometry import *
 from cartoonHelpers import *
 
 def changeView(oldView):
-    viewBox = oldView.get_viewBox().split(' ')
+    if oldView._attributes.has_key('viewBox'):
+        viewBox = oldView.get_viewBox().split(' ')
+    else:
+        viewBox = [0, 0, oldView.get_width(), oldView.get_height()]
+
     newViewBox = [float(viewBox[2]) * -.5, float(viewBox[3]) * -.5,
                   float(viewBox[2]) * 1, float(viewBox[3]) * 1]
 
@@ -15,11 +20,14 @@ def changeView(oldView):
     return newViewBox, xOffset, yOffset
 
 def calcRays(keyViews, cameraPos, stroke):
+    print keyViews
     rays = []
     for i in range(len(keyViews)):
-        if isinstance(keyViews[i][stroke], path):
-            pos = calcStrokeCenter(keyViews[i][stroke].get_d(), cameraPos[i])
-            rays.append(Ray(pos, Vector(pos, cameraPos[i])))
+        print i
+        if keyViews[i]. has_key(stroke):
+            if isinstance(keyViews[i][stroke], path):
+                pos = calcStrokeCenter(keyViews[i][stroke].get_d(), cameraPos[i])
+                rays.append(Ray(pos, Vector(pos, cameraPos[i])))
     return rays
 
 def calcAnchorPos(keyViews, cameraPos, stroke):
@@ -51,6 +59,8 @@ def combineD(dList, weight):
         else:
             sum = 0
             for j in range(0, len(temp)):
+                if temp[j] in letters:
+                    break
                 sum += weight[j] * float(temp[j])
             newD.append(str(sum))
 
@@ -110,10 +120,16 @@ def createKeyDicts(keyViews):
         keyDicts.append(dict)
     return keyDicts
 
-def getStrokeNames(dict):
+def getStrokeNames(keyDicts):
     strokes = []
-    for stroke in dict.keys():
-        strokes.append(stroke)
+    for stroke in keyDicts[1].keys():
+        print stroke
+        allHave = True
+        for dict in keyDicts:
+            if not dict.has_key(stroke):
+                allHave = False
+        if allHave:
+            strokes.append(stroke)
     return strokes
 
 def getZOrdering(anchorPos, viewPos):
@@ -124,7 +140,6 @@ def getZOrdering(anchorPos, viewPos):
         toStroke = Vector(origin, stroke[0])
         zOrder.append((toStroke.dot(toView), stroke[1]))
     zOrder.sort()
-    zOrder.reverse()
     return zOrder
 
 def calcStrokeCenter(data, cameraPos):
@@ -132,26 +147,31 @@ def calcStrokeCenter(data, cameraPos):
     minY = float('inf')
     maxX = 0 
     maxY = 0
-    
+    XorY = True
+    print data
+    data = replace(data, ',', ' ')
+    print data
     d = data.split(" ")
- #   print d
-    while d != [] and d != ['']:
-#        print d[0]
-        if d[0] == "M" or d[0] == 'C' or d[0] == 'Z' or d[0] == 'L':
+    
+    print d
+    while d != [] and d != ['']:        
+        if d[0] in letters:
             d = d[1:]
         else:
-            if float(d[0]) < minX:
-                minX = float(d[0])
-            elif float(d[0]) > maxX:
-                maxX = float(d[0])
-                
-            if float(d[1]) < minY:
-                minY = float(d[1])
-            elif float(d[1]) > maxY:
-                maxY = float(d[1])
-            
-            d = d[2:]
-
+            print d[0]
+            if XorY:
+                if float(d[0]) < minX:
+                    minX = float(d[0])
+                elif float(d[0]) > maxX:
+                    maxX = float(d[0])
+            else:    
+                if float(d[0]) < minY:
+                    minY = float(d[0])
+                elif float(d[0]) > maxY:
+                    maxY = float(d[0])            
+            d = d[1:]
+            XorY = not XorY
+    
     x = (maxX - minX) / 2
     y = (maxY - minY) / 2
     return transTo3D(cameraPos, x, y)
@@ -162,7 +182,7 @@ def transTo3D(cameraPos, x, y):
     # y times up
     # towards is vec from camera to origin
 
-    print cameraPos
+#    print cameraPos
     dist = Vector(cameraPos, Point(0,0,0)).length()
     towards = Vector(cameraPos, Point(0, 0, 0))
     right = towards.cross(Vector(cameraPos, Point(1, 0, 0)))

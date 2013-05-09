@@ -31,28 +31,28 @@ if __name__ == '__main__':
     
     keyDicts = createKeyDicts(keyViews)
     
-    strokes = getStrokeNames(keyDicts[0])
-
-    for stroke in strokes:
-        anchorPos.append((calcAnchorPos(keyDicts, cameraPos, stroke), stroke))
-
-#    print calcStrokeCenter(keyDicts[0][stroke].get_d(), cameraPos[0])
-    zOrder = getZOrdering(anchorPos, viewPos)
+    strokes = getStrokeNames(keyDicts)
+    print strokes
     
+    for stroke in strokes:
+        anchorPos.append((calcAnchorPos(keyDicts[:numKeyViews/2], cameraPos[:numKeyViews/2], stroke), stroke))
+
+    zOrder = getZOrdering(anchorPos, viewPos)
+    print zOrder
     for z, stroke in zOrder:
         dList = []
-        if isinstance(keyDicts[0][stroke], path):
+        if keyDicts[0].has_key(stroke) and isinstance(keyDicts[0][stroke], path):
             for keyDict in keyDicts:
-                if keyDict[stroke].get_d() != None:
-#                    print keyDict[stroke].get_d()
-#                    print calcStrokeCenter(keyDict[stroke].get_d(), cameraPos[0])
-                    dList.append(str(keyDict[stroke].get_d()).split(' '))
+                if keyDict.has_key(stroke) and isinstance(keyDict[stroke], path):
+                    if keyDict[stroke].get_d() != None:
+                        dList.append(str(keyDict[stroke].get_d()).split(' '))
 
             newD = combineD(dList, weights)
-            tempStroke = copy.deepcopy(keyDicts[viewNum][stroke])
-            tempStroke.set_d(newD)
-            tempStroke.set_transform(keyViews[viewNum].get_transform())
-            newSvg.addElement(tempStroke)
+            if isinstance(keyDicts[viewNum][stroke], path):
+                tempStroke = copy.deepcopy(keyDicts[viewNum][stroke])
+                tempStroke.set_d(newD)
+                tempStroke.set_transform(keyViews[viewNum].get_transform())
+                newSvg.addElement(tempStroke)
     
 #    newSvg.set_transform(offsetMatrix.getTransform())
     

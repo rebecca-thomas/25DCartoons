@@ -1,0 +1,13 @@
+3
+ball1.svg
+0
+0
+-1
+ball2.svg
+-1
+0
+0
+ball3.svg
+0
+1
+0

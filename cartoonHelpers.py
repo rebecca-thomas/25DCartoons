@@ -6,7 +6,7 @@ def getSubElems(elem):
     return strokes
 
 def subs(elem, dict):
-    if isinstance(elem, BaseElement) and elem.getAttribute('id') != None:
+    if isinstance(elem, path) and elem.getAttribute('id') != None:
         dict[elem.getAttribute('id')] = elem
     for sub in elem._subElements:
         if isinstance(sub, BaseElement):

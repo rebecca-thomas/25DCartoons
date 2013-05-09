@@ -17,4 +17,5 @@ def readInput(filename):
         cameraPos.append(Point(float(f.readline()),
                           float(f.readline()),
                           float(f.readline())))
+        print
     return numViews, keyViews, cameraPos

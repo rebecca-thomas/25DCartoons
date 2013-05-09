@@ -1,0 +1,13 @@
+3
+smile1.svg
+0
+0
+-1
+smile2.svg
+-1
+0
+0
+smile3.svg
+0
+1
+0

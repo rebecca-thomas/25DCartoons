@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:jitters="http://www.semicolonproductions.com/jitters" viewBox="0.000000 0.000000 744.094480 1052.362200" jitters:gridXSpacing="10" jitters:gridYSpacing="10" jitters:gridActive="no">
+    <defs/>
+    <g visibility="visible" id="Base Layer" jitters:groupType="layer" jitters:effect="none">
+        <path d="M 314.286 663.791 L 355.801 558.934 L 267.283 488.484 L 379.837 495.566 L 419.485 389.610 L 447.531 498.843 L 560.553 503.808 L 465.333 564.237 L 495.537 673.261 L 408.641 601.375 L 314.286 663.791 Z M 314.286 663.791 " fill="#ff0" fill-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="#000" stroke-opacity="1" id="backStar"/>
+        <path d="M 654.286 556.648 C 654.286 689.985 544.915 798.076 410.000 798.076 C 275.085 798.076 165.714 689.985 165.714 556.648 C 165.714 423.311 275.085 315.219 410.000 315.219 C 544.915 315.219 654.286 423.311 654.286 556.648 L 654.286 556.648 Z M 654.286 556.648 " fill="#f00" fill-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="#000" stroke-opacity="1" id="ball"/>
+        <path d="M 314.286 660.934 L 355.801 556.076 L 267.283 485.627 L 379.837 492.708 L 419.485 386.752 L 447.531 495.986 L 560.553 500.951 L 465.333 561.380 L 495.537 670.404 L 408.641 598.517 L 314.286 660.934 Z M 314.286 660.934 " fill="#ff0" fill-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="#000" stroke-opacity="1" id="frontStar"/>
+    </g>
+</svg>

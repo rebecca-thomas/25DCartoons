@@ -3,7 +3,7 @@
 --2. create derived key views
 --3. seperate strokes
 --4. associate strokes across views
-5. find position
+--5. find position
 --6. calc rays
 --7. calc anchor point
 --8. interpolate
