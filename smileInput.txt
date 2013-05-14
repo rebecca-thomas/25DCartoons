@@ -1,5 +1,5 @@
 3
-smile1.svg
+smile1copy.svg
 0
 0
 -1
@@ -7,7 +7,7 @@ smile2.svg
 -1
 0
 0
-smile3.svg
+smile3copy.svg
 0
 1
 0

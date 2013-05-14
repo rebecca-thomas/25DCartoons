@@ -1,0 +1,13 @@
+3
+circle1.svg
+0
+0
+-1
+circle2.svg
+-1
+0
+0
+circle3.svg
+0
+1
+0

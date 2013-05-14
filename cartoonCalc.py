@@ -20,10 +20,10 @@ def changeView(oldView):
     return newViewBox, xOffset, yOffset
 
 def calcRays(keyViews, cameraPos, stroke):
-    print keyViews
+    #print keyViews
     rays = []
     for i in range(len(keyViews)):
-        print i
+   #     print i
         if keyViews[i]. has_key(stroke):
             if isinstance(keyViews[i][stroke], path):
                 pos = calcStrokeCenter(keyViews[i][stroke].get_d(), cameraPos[i])
@@ -79,7 +79,7 @@ def getWeighting(cameraPos, viewPos):
     
     for i in range(0, len(weights)):
         weights[i] = weights[i] / maxVal
-
+    print weights
     return weights
 
 def getViewNum(weights):
@@ -89,18 +89,47 @@ def getViewNum(weights):
         if weights[i] > max:
             max = weights[i]
             maxInd = i
+    print maxInd
     return maxInd
 
 def reverseTransform(origView, xOffset, yOffset):
     reverseMatrix = TransformBuilder()
     xVal = 1
     yVal = 1
+    val2 = 0
+    val3 = 0
     if origView.x != 0:
         xVal = -1
     elif origView.y != 0:
         yVal = -1
+
     reverseMatrix.setMatrix(xVal, 0, 0, yVal, xOffset * xVal, yOffset * yVal)
     return reverseMatrix.getTransform()
+
+def combineTransforms(matrix1, matrix2):
+#    matrix1 = trans1.transform_dict['matrix']
+#    matrix2 = trans2.transform_dict['matrix']
+    matrix1 = matrix1[7:-2]
+    matrix1 = matrix1.split(' ')
+    matrix2 = matrix2[7:-2]
+    matrix2 = matrix2.split(' ')
+    print matrix1
+    matrix3 = [0,0,0,0,0,0]
+    xNeg = 1
+    yNeg = 1
+    if float(matrix1[0]) == -1 or float(matrix2[0]) == -1:
+        xNeg = -1
+    if float(matrix1[3]) == -1 or float(matrix2[3]) == -1:
+        yNeg = -1
+        xNeg = 1
+    matrix3[0] = float(matrix1[0]) * float(matrix2[0])
+    matrix3[3] = float(matrix1[3]) * float(matrix2[3])
+    matrix3[4] = xNeg * (float(matrix1[4])*float(matrix1[0]) + float(matrix2[4])*float(matrix2[0])) / 2
+    matrix3[5] = yNeg * (float(matrix1[5])*float(matrix1[3]) + float(matrix2[5])*float(matrix2[3])) / 2
+    
+    newMatrix = TransformBuilder()
+    newMatrix.setMatrix(matrix3[0], matrix3[1], matrix3[2], matrix3[3], matrix3[4], matrix3[5])
+    return newMatrix.getTransform()
 
 def getDerivedViews(keyViews, numKeyViews, cameraPos, xOffset, yOffset):
     offsetMatrix = TransformBuilder()
@@ -123,7 +152,7 @@ def createKeyDicts(keyViews):
 def getStrokeNames(keyDicts):
     strokes = []
     for stroke in keyDicts[1].keys():
-        print stroke
+  #      print stroke
         allHave = True
         for dict in keyDicts:
             if not dict.has_key(stroke):
@@ -148,17 +177,17 @@ def calcStrokeCenter(data, cameraPos):
     maxX = 0 
     maxY = 0
     XorY = True
-    print data
+#    print data
     data = replace(data, ',', ' ')
-    print data
+#    print data
     d = data.split(" ")
     
-    print d
+ #   print d
     while d != [] and d != ['']:        
-        if d[0] in letters:
+        if d[0] in ['A', 'M', 'Z', 'C', 'L']:
             d = d[1:]
         else:
-            print d[0]
+#            print d[0]
             if XorY:
                 if float(d[0]) < minX:
                     minX = float(d[0])
@@ -178,11 +207,6 @@ def calcStrokeCenter(data, cameraPos):
     
 def transTo3D(cameraPos, x, y):
 
-    # x times right
-    # y times up
-    # towards is vec from camera to origin
-
-#    print cameraPos
     dist = Vector(cameraPos, Point(0,0,0)).length()
     towards = Vector(cameraPos, Point(0, 0, 0))
     right = towards.cross(Vector(cameraPos, Point(1, 0, 0)))

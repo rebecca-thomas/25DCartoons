@@ -6,12 +6,17 @@ from cartoonParsing import *
 from cartoonHelpers import *
 from cartoonCalc import *
 
-if __name__ == '__main__':
-    anchorPos = []
 
+if __name__ == '__main__':
     inputFile = sys.argv[1]    
     outputFile = sys.argv[2]
     viewTempPos = map(float, sys.argv[3].split("_"))
+    createImage(inputFile, outputFile, viewTempPos)
+
+
+def createImage(inputFile, outputFile, viewTempPos):
+    anchorPos = []
+
     viewPos = Point(viewTempPos[0], viewTempPos[1], viewTempPos[2])
 
 
@@ -29,11 +34,26 @@ if __name__ == '__main__':
     
     weights = getWeighting(cameraPos, viewPos)
     viewNum = getViewNum(weights)
-    
+
+    transforms = []
+    for i in range(0, len(weights)):
+        if weights[i] != 0:
+            print keyViews[i].get_transform()
+            transforms.append(keyViews[i].get_transform())
+
     keyDicts = createKeyDicts(keyViews)
     
     strokes = getStrokeNames(keyDicts)
     print strokes
+
+    if viewNum < numKeyViews/2 and weights[viewNum] == 1.0:
+        #for stroke in strokes:
+        #    tempStroke = copy.deepcopy(keyDicts[viewNum][stroke])
+        #    tempStroke.set_transform(keyViews[viewNum].get_transform())
+        #    newSvg.addElement(tempStroke)
+        newSvg = keyViews[viewNum]
+        writeSVG(outputFile, newSvg)
+        return
     
     for stroke in strokes:
         anchorPos.append((calcAnchorPos(keyDicts[:numKeyViews/2], cameraPos[:numKeyViews/2], stroke), stroke))
@@ -52,7 +72,10 @@ if __name__ == '__main__':
             if isinstance(keyDicts[viewNum][stroke], path):
                 tempStroke = copy.deepcopy(keyDicts[viewNum][stroke])
                 tempStroke.set_d(newD)
-                tempStroke.set_transform(keyViews[viewNum].get_transform())
+                print transforms
+                trans = reduce(combineTransforms, transforms)
+                print trans
+                tempStroke.set_transform(trans)
                 newSvg.addElement(tempStroke)
     
 #    newSvg.set_transform(offsetMatrix.getTransform())
