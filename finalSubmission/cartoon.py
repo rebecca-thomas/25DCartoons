@@ -28,7 +28,6 @@ def createImage(inputFile, outputFile, viewTempPos):
     transforms = []
     for i in range(0, len(weights)):
         if weights[i] != 0:
-            print keyViews[i].get_transform()
             transforms.append(keyViews[i].get_transform())
 
     keyDicts = createKeyDicts(keyViews)

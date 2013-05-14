@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:jitters="http://www.semicolonproductions.com/jitters" viewBox="0.000000 0.000000 640.000000 480.000000" jitters:gridXSpacing="10" jitters:gridYSpacing="10" jitters:gridActive="no">
+    <defs/>
+    <g visibility="visible" id="Base Layer" jitters:groupType="layer" jitters:effect="none">
+        <path d="M 471.092 160.296 C 477.012 172.819 477.012 193.123 471.092 205.646 C 465.173 218.169 455.576 218.169 449.657 205.646 C 443.737 193.123 443.737 172.819 449.657 160.296 C 455.576 147.774 465.173 147.774 471.092 160.296 Z M 471.092 160.296 " fill="#000" fill-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="none" id="leftEye"/>
+        <path d="M 443.022 115.243 C 506.072 181.709 506.072 289.471 443.022 355.937 C 379.971 422.403 277.746 422.403 214.695 355.937 C 151.644 289.471 151.644 181.709 214.695 115.243 C 277.746 48.777 379.971 48.777 443.022 115.243 Z M 443.022 115.243 " fill="#ffe74d" fill-opacity="1" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="#ffe74d" stroke-opacity="1" id="head"/>
+        <path d="M 471.092 160.296 C 477.012 172.819 477.012 193.123 471.092 205.646 C 465.173 218.169 455.576 218.169 449.657 205.646 C 443.737 193.123 443.737 172.819 449.657 160.296 C 455.576 147.774 465.173 147.774 471.092 160.296 Z M 471.092 160.296 " fill="#000" fill-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="none" id="rightEye"/>
+        <path d="M 377.503 274.465 L 424.169 320.018 L 476.290 323.156 L 476.290 323.156 L 476.290 323.156 " fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="#000" stroke-opacity="1" id="mouth"/>
+    </g>
+</svg>

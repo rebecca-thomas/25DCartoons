@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:jitters="http://www.semicolonproductions.com/jitters" viewBox="0.000000 0.000000 640.000000 480.000000" jitters:gridXSpacing="10" jitters:gridYSpacing="10" jitters:gridActive="no">
+    <defs/>
+    <g visibility="visible" id="Base Layer" jitters:groupType="layer" jitters:effect="none">
+        <path d="M 440.208 119.792 C 506.597 186.181 506.597 293.819 440.208 360.208 C 373.819 426.597 266.181 426.597 199.792 360.208 C 133.403 293.819 133.403 186.181 199.792 119.792 C 266.181 53.403 373.819 53.403 440.208 119.792 Z M 440.208 119.792 " fill="#0098f8" fill-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="none" id="circle"/>
+        <path d="M 318.859 71.409 L 362.805 76.773 L 413.589 99.607 L 457.070 138.991 L 482.152 190.866 L 489.318 249.705 L 474.471 308.607 L 444.879 355.404 L 407.468 386.940 L 359.001 404.140 L 317.746 410.147 " fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="#00f94f" stroke-opacity="1" id="vert"/>
+        <path d="M 488.594 240.000 L 485.842 239.875 L 474.382 239.750 L 454.699 239.625 L 428.833 239.500 L 399.534 239.500 L 370.245 239.500 L 347.009 239.625 L 331.383 239.750 L 322.913 239.875 L 320.000 240.000 " fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="#00f94f" stroke-opacity="1" id="horiz"/>
+        <path d="M 443.456 126.211 L 447.884 121.570 L 432.952 135.787 L 418.555 149.210 L 399.664 166.878 L 378.362 186.995 L 357.068 207.105 L 340.260 223.149 L 328.985 233.969 L 322.913 239.875 L 320.881 241.966 " fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="#ffa639" stroke-opacity="1" id="cross"/>
+    </g>
+</svg>

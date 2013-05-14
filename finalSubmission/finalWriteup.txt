@@ -1,0 +1,60 @@
+image assumptions
+
+input
+
+This program can be used to create intermediate views for 2.5D cartoons.
+This follows the algorithm laid out by Alec Rivers in his paper 2.5D Cartoon
+Models.
+
+Usage:
+	python cartoon.py [inputfile] [outputfile] [position]
+
+where the inputfile is of the format:
+
+numKeyViews
+filename0
+x0
+y0
+z0
+filename1
+x1
+y1
+z1
+....
+filenameN
+xN
+yN
+zN
+
+and position is the relative position from which the image should be 
+created. The format for specifying the position is xCoor_yCoor_zCoor.
+
+To create all axis views and midviews the program can be run through
+the testbench by saying
+
+	python testbench.py [inputfile] [OutputfileBase]
+
+This will output files in the format OutputfileBaseXCoorYCoorZCoor.svg.
+
+Assumptions:
+This program makes the following assumptions about the images for the
+key views:
+    - all strokes appear in all images
+    - all stroke are paths
+    - all strokes have the same number of control points across views
+    - all strokes are assigned id attributes which are consistent across
+      views
+    
+Provided Test Files:
+The following files are provided for testing:
+    inputFile 	    imageFile
+    input.txt	    face1.svg
+    		    face2.svg
+		    face3.svg
+
+    circleInput.txt circle1.svg
+    		    circle2.svg
+		    circle3.svg
+
+
+

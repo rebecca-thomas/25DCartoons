@@ -11,6 +11,7 @@ if __name__ == '__main__':
                    [0,-1,1], [-1,1,0], [-1,0,1],
                    [0,1,-1], [1,-1,0], [1,0,-1]]
 
+    print len(imageAngles)
     
     for i in range(0, len(imageAngles)):
         print "creating image: ", i

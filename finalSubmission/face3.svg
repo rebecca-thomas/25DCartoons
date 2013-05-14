@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:jitters="http://www.semicolonproductions.com/jitters" viewBox="0.000000 0.000000 640.000000 480.000000" jitters:gridXSpacing="10" jitters:gridYSpacing="10" jitters:gridActive="no">
+    <defs/>
+    <g visibility="visible" id="Base Layer" jitters:groupType="layer" jitters:effect="none">
+        <path d="M 296.423 394.883 C 305.667 400.544 301.503 408.139 287.122 411.845 C 272.741 415.551 253.589 413.966 244.345 408.305 C 235.100 402.643 239.264 395.049 253.645 391.343 C 268.026 387.636 287.179 389.221 296.423 394.883 Z M 296.423 394.883 " fill="#000" fill-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="none" id="leftEye"/>
+        <path d="M 227.302 391.587 L 266.477 390.310 L 318.598 393.448 L 371.935 391.979 L 402.390 393.567 " fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="#000" stroke-opacity="1" id="mouth"/>
+        <path d="M 387.263 392.495 C 399.223 397.013 399.223 404.338 387.263 408.856 C 375.302 413.373 355.910 413.373 343.950 408.856 C 331.988 404.338 331.988 397.013 343.950 392.495 C 355.910 387.977 375.302 387.977 387.263 392.495 Z M 387.263 392.495 " fill="#000" fill-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="none" id="rightEye"/>
+        <path d="M 440.208 119.792 C 506.597 186.181 506.597 293.819 440.208 360.208 C 373.819 426.597 266.181 426.597 199.792 360.208 C 133.403 293.819 133.403 186.181 199.792 119.792 C 266.181 53.403 373.819 53.403 440.208 119.792 Z M 440.208 119.792 " fill="#ffe74d" fill-opacity="1" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" stroke-dasharray="" stroke-dashoffset="0" stroke="#ffe74d" stroke-opacity="1" id="head"/>
+    </g>
+</svg>
