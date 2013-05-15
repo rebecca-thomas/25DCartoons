@@ -1,7 +1,3 @@
-image assumptions
-
-input
-
 This program can be used to create intermediate views for 2.5D cartoons.
 This follows the algorithm laid out by Alec Rivers in his paper 2.5D Cartoon
 Models.
@@ -57,4 +53,20 @@ The following files are provided for testing:
 		    circle3.svg
 
 
+Rubric: 
+	Week 1: displaying work and creating starting images.
+	     - I was able to output new svg files to see the created images and 
+	       I created two sets of starting images, face and circle. Other images
+	       could be created as well.
+	Week 2: anchor points and z-ordering
+	     - Anchor points and z-ordering are correctly calculated
+	Week 3: implementation of interpolation
+	     - The interpolation assumes that all strokes have the same number of
+	       control points across all strokes.
+	     - There are also some issues with images being flipped when y is -1
+	Week 4: creating animations and debugging
+	     - I did not actually create any animations but one could easily be created
+	       by outputing a serie of images from adjacent views.
+	     - I spent most of the last week and a half debugging but there are still
+	       some small issues I couldn't work out.
 
