@@ -44,3 +44,7 @@ cartoon.py~
 *.pyc
 
 *.py~
+
+*.pyc
+
+.DS_Store
